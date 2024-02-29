@@ -10,6 +10,7 @@ import {
   XCircle,
   Star,
   LogOut,
+  X,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -25,7 +26,9 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setShowHeaderItems(!["/signup", "/login", "/forgot"].includes(location.pathname));
+    setShowHeaderItems(
+      !["/signup", "/login", "/forgot"].includes(location.pathname)
+    );
   }, [location.pathname]);
 
   let links = [
@@ -51,17 +54,20 @@ const Header = () => {
             <h2 className="text-black text-2xl font-bold">Exclusive</h2>
           </Link>
           <div
-            className="absolute right-8 top-[32%] text-2xl lg:hidden md:hidden"
+            className="absolute right-8 top-[37%] text-2xl lg:hidden md:hidden"
             onClick={() => setOpen(!open)}
           >
-            <Menu name={open ? "close" : "menu"} />
+            {!open ? (
+              <Menu name="menu" color="#2A254B" />
+            ) : (
+              <X name="close" color="#2A254B" />
+            )}
+            
           </div>
           <ul
             className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in-out ${
               open ? "top-10 opacity-100" : "top-[-990px]"
-            } ${
-              showHeaderItems ? "top-10 opacity-100" : "top-[-990px]"
-            }`}
+            } ${showHeaderItems ? "top-10 opacity-100" : "top-[-990px]"}`}
           >
             {links.map((link) => (
               <li key={link.name} className="md:ml-8 md:my-0 my-7">
@@ -80,6 +86,7 @@ const Header = () => {
               </li>
             ))}
           </ul>
+          
           <div className="relative w-1/5 hidden lg:block">
             <input
               className="h-8 w-full rounded bg-[#f5f5f5] py-2 px-4 text-sm placeholder:text-gray-600 focus:outline-none"
@@ -115,7 +122,9 @@ const Header = () => {
                           className="flex gap-1 items-center"
                         >
                           {items.icon}
-                          <DropdownMenuItem className="cursor-pointer text-xs">{items.name}</DropdownMenuItem>
+                          <DropdownMenuItem className="cursor-pointer text-xs">
+                            {items.name}
+                          </DropdownMenuItem>
                         </Link>
                       </li>
                     ))}

@@ -4,14 +4,14 @@ const Login = () => {
   return (
     <section>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 my-6 gap-5">
-        <div className="w-full">
-          <img src="images/signupimg.png" alt="" className="w-5/6" />
+        <div className="w-full lg:order-none order-2">
+          <img src="images/signupimg.png" alt="" className="lg:w-5/6 sm:w-full" />
         </div>
-        <form className="flex flex-col gap-6 w-80 justify-center mx-9">
+        <form className="flex flex-col gap-6 w-80 justify-center mx-auto px-3">
           <h2 className="text-black text-3xl font-semibold">
             Log in to Exclusive
           </h2>
-          <h2>Enter your details below</h2>
+          <h2 className="lg:text-lg sm:text-sm">Enter your details below</h2>
           <div className="flex flex-col gap-8">
             <input
               className="h-8 border-b border-gray-300 py-2 text-sm placeholder:text-gray-600 focus:outline-none"

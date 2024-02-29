@@ -5,10 +5,10 @@ const Signup = () => {
     <>
       <section>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 my-6 gap-5">
-          <div className="w-full">
-            <img src="images/signupimg.png" alt="" className="w-5/6" />
+          <div className="w-full lg:order-none order-2">
+            <img src="images/signupimg.png" alt="" className="lg:w-5/6 sm:w-full" />
           </div>
-          <form className="flex flex-col gap-6 w-80 justify-center mx-9">
+          <form className="flex flex-col gap-6 w-80 justify-center mx-auto px-3">
             <h2 className="text-black text-3xl font-semibold">Create an Account</h2>
             <h2>Enter your details below</h2>
             <div className="flex flex-col gap-8">
