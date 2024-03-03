@@ -2,13 +2,14 @@ import React, { useRef, useState } from "react";
 import { Heart, Eye, ShoppingCart } from "lucide-react";
 
 const Card = ({
-  prod_discount,
+  prod_discount = " ",
   prod_img,
   prod_name,
   prod_price,
   prod_cutPrice = " ",
   prod_reviews,
   prod_rating,
+  showDiscountTag = true,
 }) => {
   const heartRef = useRef(null);
   const [isRed, setIsRed] = useState(false);
@@ -33,11 +34,13 @@ const Card = ({
             className="h-[200px] w-full rounded-t-md object-contain group-hover:scale-110 transition-all ease-in-out duration-100"
           />
         </div>
-        <div className="absolute top-3 left-2">
-          <span className="bg-red-500 text-white px-4 py-2 text-xs rounded">
-            {prod_discount}
-          </span>
-        </div>
+        {showDiscountTag && (
+          <div className="absolute top-3 left-2">
+            <span className="bg-red-500 text-white px-4 py-2 text-xs rounded">
+              {prod_discount}
+            </span>
+          </div>
+        )}
         <div className="absolute top-2 right-2 flex flex-col gap-3">
           <button
             variant="outline"
@@ -51,8 +54,8 @@ const Card = ({
           </button>
         </div>
         <div className="absolute w-full bottom-[27%] invisible group-hover:visible ">
-          <button className="w-full bg-black flex justify-center items-center gap-4 py-3 px-4 text-white">
-          <ShoppingCart className="w-6" />
+          <button className="w-full bg-black flex justify-center items-center gap-4 py-3 px-4 text-white text-sm">
+            <ShoppingCart className="w-5" />
             Add to Cart
           </button>
         </div>

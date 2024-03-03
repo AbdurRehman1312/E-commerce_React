@@ -10,7 +10,9 @@
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
-    /* border: 2px solid blue; */
+    /* box-sizing: border-box; */
+    /* box-shadow: 0 0 0 2px blue; */
+    /* overflow-x: hidden !important; */
   }
   ::selection{
     @apply bg-red-500 text-white
