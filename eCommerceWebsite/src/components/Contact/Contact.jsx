@@ -1,8 +1,11 @@
 import React from 'react'
+import BreadCrumb from '../BreadCrumb/BreadCrumb'
 
 const Contact = () => {
   return (
-    <div className='p-3 bg-gray-800 text-white'>I am contact</div>
+    <>
+    <BreadCrumb />
+    </>
   )
 }
 
