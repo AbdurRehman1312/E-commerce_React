@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import { Heart, Eye, ShoppingCart } from "lucide-react";
-
+import { Heart, Eye, ShoppingCart, XCircle } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
 const Card = ({
   prod_discount = " ",
   prod_img,
@@ -13,13 +13,16 @@ const Card = ({
 }) => {
   const heartRef = useRef(null);
   const [isRed, setIsRed] = useState(false);
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const handleClick = () => {
     if (isRed) {
       heartRef.current.setAttribute("fill", "white");
       heartRef.current.setAttribute("stroke", "black");
+      toast.error("Removed From Wishlist");
     } else {
       heartRef.current.setAttribute("fill", "red");
       heartRef.current.setAttribute("stroke", "none");
+      toast.success("Added to Wishlist");
     }
     setIsRed(!isRed);
   };
@@ -49,7 +52,10 @@ const Card = ({
           >
             <Heart ref={heartRef} className="rounded-full w-5 " />
           </button>
-          <button className="h-[35px] w-[35px] flex justify-center items-center rounded-full bg-white">
+          <button
+            className="h-[35px] w-[35px] flex justify-center items-center rounded-full bg-white"
+            onClick={() => setIsPopUpOpen(true)}
+          >
             <Eye className="w-5 " />
           </button>
         </div>
@@ -78,6 +84,21 @@ const Card = ({
           </div>
         </div>
       </div>
+      {isPopUpOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75">
+          <div className="max-w-screen-lg h-screen w-full  rounded-lg shadow-lg overflow-hidden">
+            <div className="flex justify-center items-center h-screen">
+              <img src={prod_img} alt="Laptop" className="w-1/3 object-cover" />
+            </div>
+            <button
+              className="absolute top-10 right-4 text-gray-600 hover:text-gray-900"
+              onClick={() => setIsPopUpOpen(false)}
+            >
+              <XCircle className="text-white" />
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

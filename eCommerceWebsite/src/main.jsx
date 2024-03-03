@@ -11,6 +11,7 @@ import Login from './components/Login/Login.jsx'
 import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 import WishList from './components/WishList/WishList'
 import Cart from './components/Cart/Cart'
+import Error from './components/Error/Error'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path='forgot' element={<ForgotPassword />} />
       <Route path='wishlist' element={<WishList />} />
       <Route path='cart' element={<Cart />} />
+      <Route path='*' element={<Error />} />
     </Route>
   )
 )

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import {
   Carousel,
   CarouselContent,
@@ -118,6 +119,7 @@ const Home = () => {
   return (
     <>
       <section>
+      <Toaster position="top-right" reverseOrder={false} />
         <div className="mb-5">
           <div className="flex flex-col md:flex-row w-full text-center py-8 md:py-12 px-4 md:px-24 bg-black text-white items-center justify-between">
             <div className="flex flex-col lg:flex-col md:flex-col items-center md:items-start gap-4 md:gap-7">
@@ -194,77 +196,80 @@ const Home = () => {
           <div className="flex justify-center my-10">
             <button className="btn_red text-sm px-14">View All Products</button>
           </div>
-        </div>
-        <div className="container my-10 border-b">
-          <div className="flex items-center gap-3">
-            <img src="icons/redbox.png" alt="" className="w-5" />
-            <h1 className="text-sm font-bold text-red-500">Categories</h1>
-          </div>
-          <h1 className="text-black font-sembold text-3xl my-6">
-            Browse By Category
-          </h1>
-          <Carousel className="w-full relative py-16 mb-11">
-            <CarouselContent>
-              {categories.map((category, index) => (
-                <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/6">
-                  <CategoryCard
-                    category_name={category.category_name}
-                    icon={category.icon}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute lg:top-[-12%] lg:left-[94%] md:left-[90%] md:top-[-17%] lg:visible md:visible invisible" />
-            <CarouselNext className="absolute lg:top-[-12%] lg:left-[97.5%] md:left-[96%] md:top-[-17%] lg:visible md:visible invisible" />
-          </Carousel>
-        </div>
-        <div className="container my-16 border-b">
-          <div className="flex items-center gap-3">
-            <img src="icons/redbox.png" alt="" className="w-5" />
-            <h1 className="text-sm font-bold text-red-500">This Month</h1>
-          </div>
-          <div className="flex lg:flex-row flex-col md:flex-row justify-between sm:flex-col items-center">
+          <div className="my-10 border-b">
+            <div className="flex items-center gap-3">
+              <img src="icons/redbox.png" alt="" className="w-5" />
+              <h1 className="text-sm font-bold text-red-500">Categories</h1>
+            </div>
             <h1 className="text-black font-sembold text-3xl my-6">
-              Best Selling Products
+              Browse By Category
             </h1>
-            <button className="btn_red text-sm px-10">View All</button>
+            <Carousel className="w-full relative py-16 mb-11">
+              <CarouselContent>
+                {categories.map((category, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="md:basis-1/3 lg:basis-1/6"
+                  >
+                    <CategoryCard
+                      category_name={category.category_name}
+                      icon={category.icon}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="absolute lg:top-[-12%] lg:left-[94%] md:left-[90%] md:top-[-17%] lg:visible md:visible invisible" />
+              <CarouselNext className="absolute lg:top-[-12%] lg:left-[97.5%] md:left-[96%] md:top-[-17%] lg:visible md:visible invisible" />
+            </Carousel>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 my-10">
-            <Card
-              prod_img="images/product5.png"
-              prod_name="The north coat"
-              prod_price="$260"
-              prod_cutPrice="$360"
-              prod_rating="images/fivestar.png"
-              prod_reviews="(65)"
-              showDiscountTag={false}
-            />
-            <Card
-              prod_img="images/product6.png"
-              prod_name="Gucci duffle bag"
-              prod_price="$960"
-              prod_cutPrice="$1160"
-              prod_rating="images/fourhalfstar.png"
-              prod_reviews="(65)"
-              showDiscountTag={false}
-            />
-            <Card
-              prod_img="images/product7.png"
-              prod_name="RGB liquid CPU Cooler"
-              prod_price="$160"
-              prod_cutPrice="$170"
-              prod_rating="images/fourhalfstar.png"
-              prod_reviews="(65)"
-              showDiscountTag={false}
-            />
-            <Card
-              prod_img="images/product8.png"
-              prod_name="Small BookSelf"
-              prod_price="$360"
-              prod_rating="images/fivestar.png"
-              prod_reviews="(65)"
-              showDiscountTag={false}
-            />
+          <div className="my-16 border-b">
+            <div className="flex items-center gap-3">
+              <img src="icons/redbox.png" alt="" className="w-5" />
+              <h1 className="text-sm font-bold text-red-500">This Month</h1>
+            </div>
+            <div className="flex lg:flex-row flex-col md:flex-row justify-between sm:flex-col items-center">
+              <h1 className="text-black font-sembold text-3xl my-6">
+                Best Selling Products
+              </h1>
+              <button className="btn_red text-sm px-10">View All</button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 my-10">
+              <Card
+                prod_img="images/product5.png"
+                prod_name="The north coat"
+                prod_price="$260"
+                prod_cutPrice="$360"
+                prod_rating="images/fivestar.png"
+                prod_reviews="(65)"
+                showDiscountTag={false}
+              />
+              <Card
+                prod_img="images/product6.png"
+                prod_name="Gucci duffle bag"
+                prod_price="$960"
+                prod_cutPrice="$1160"
+                prod_rating="images/fourhalfstar.png"
+                prod_reviews="(65)"
+                showDiscountTag={false}
+              />
+              <Card
+                prod_img="images/product7.png"
+                prod_name="RGB liquid CPU Cooler"
+                prod_price="$160"
+                prod_cutPrice="$170"
+                prod_rating="images/fourhalfstar.png"
+                prod_reviews="(65)"
+                showDiscountTag={false}
+              />
+              <Card
+                prod_img="images/product8.png"
+                prod_name="Small BookSelf"
+                prod_price="$360"
+                prod_rating="images/fivestar.png"
+                prod_reviews="(65)"
+                showDiscountTag={false}
+              />
+            </div>
           </div>
         </div>
         <div className=" my-8">
@@ -349,8 +354,8 @@ const Home = () => {
               </div>
             </div>
             <div className="grid grid-rows-2 gap-6">
-              <div className="bg-[#0c0c0c] flex flex-col lg:flex-row justify-between p-5 md:p-6 ">
-                <div className="flex flex-col gap-5">
+              <div className="bg-[#0c0c0c] flex flex-col lg:flex-row justify-between">
+                <div className="flex flex-col gap-5 p-5 md:p-6 ">
                   <h2 className="text-white text-2xl md:text-3xl font-semibold">
                     Women’s Collections
                   </h2>
