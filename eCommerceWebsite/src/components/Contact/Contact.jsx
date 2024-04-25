@@ -33,7 +33,7 @@ const Contact = () => {
               </div>
             </div>
             {/* Second Column (8 columns wide on small and medium screens) */}
-            <form className="col-span-1 sm:col-span-8 bg-white shadow-xl px-2 py-10 rounded-lg">
+            <form className="col-span-1 sm:col-span-8 bg-white shadow-xl px-7 py-10 rounded-lg">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <input
                   className="h-14 w-full rounded bg-[#f5f5f5] py-2 px-4 text-sm placeholder:text-gray-600 focus:outline-none"

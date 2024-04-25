@@ -1,8 +1,11 @@
 import React from 'react'
+import BreadCrumb from '../BreadCrumb/BreadCrumb'
 
 const Cart = () => {
   return (
-    <div>Cart</div>
+    <>
+    <BreadCrumb />
+    </>
   )
 }
 

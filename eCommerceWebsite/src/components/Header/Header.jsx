@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   Menu,
   Heart,
@@ -56,7 +56,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={`sticky top-0 left-0 z-50 bg-white transition-all duration-300 shadow-lg ${isScrolled ? "bg-white shadow-lg" : ""}`}>
+    <header className={`sticky top-0 left-0 z-50 bg-white transition-all duration-300 shadow-md ${isScrolled ? "bg-white shadow-lg" : ""}`}>
       <div className="container">
         <div className="md:flex items-center justify-between py-6">
           <Link to="/" className="flex items-center">
@@ -107,13 +107,13 @@ const Header = () => {
             <Link to="/wishlist" className="relative">
               <Heart className="w-5" />
               <div className="absolute top-[-30%] right-[-50%] w-full">
-                <span className="px-[5px] py-[2px] rounded-full bg-red-500 text-white text-xs">0</span>
+                <span className="px-[7px] py-[3px] rounded-full bg-red-500 text-white text-xs">4</span>
               </div>
             </Link>
             <Link to="/cart" className="relative">
               <ShoppingCart className="w-5" />
               <div className="absolute top-[-30%] right-[-50%] w-full">
-                <span className="px-[5px] py-[2px] rounded-full bg-red-500 text-white text-xs">0</span>
+                <span className="px-[7px] py-[3px] rounded-full bg-red-500 text-white text-xs">2</span>
               </div>
             </Link>
             <DropdownMenu>

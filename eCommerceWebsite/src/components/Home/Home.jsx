@@ -355,7 +355,7 @@ const Home = () => {
             </div>
             <div className="grid grid-rows-2 gap-6">
               <div className="bg-[#0c0c0c] flex flex-col lg:flex-row justify-between">
-                <div className="flex flex-col gap-5 p-5 md:p-6 ">
+                <div className="flex flex-col gap-5 p-3 md:p-6">
                   <h2 className="text-white text-2xl md:text-3xl font-semibold">
                     Women’s Collections
                   </h2>

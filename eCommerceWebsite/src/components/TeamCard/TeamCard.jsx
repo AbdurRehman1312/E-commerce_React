@@ -5,7 +5,7 @@ const TeamCard = ({team_img,team_name,team_designation}) => {
     <div className="w-[100%] my-10">
       <div className="flex flex-col gap-5">
         <div className="bg-[#f5f5f5] h-80 w-full py-5 overflow-hidden">
-          <img src={team_img} alt="" className="w-full h-auto object-cover" />
+          <img src={team_img} alt="" className="w-full h-auto object-cover mx-auto" />
         </div>
         <div className="flex flex-col gap-4">
           <h2 className="text-black font-semibold text-xl">{team_name}</h2>

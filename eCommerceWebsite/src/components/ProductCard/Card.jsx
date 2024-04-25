@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import { Heart, Eye, ShoppingCart, XCircle } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+import { Heart, Eye, ShoppingCart, XCircle, Trash2 } from "lucide-react";
+import toast from "react-hot-toast";
 const Card = ({
   prod_discount = " ",
   prod_img,
@@ -10,6 +10,10 @@ const Card = ({
   prod_reviews,
   prod_rating,
   showDiscountTag = true,
+  showDelete = false,
+  showHeart = true,
+  showEye = true,
+  onDelete,
 }) => {
   const heartRef = useRef(null);
   const [isRed, setIsRed] = useState(false);
@@ -26,16 +30,29 @@ const Card = ({
     }
     setIsRed(!isRed);
   };
-
+  const handleDelete = () => {
+    onDelete();
+    toast.error("Removed From Wishlist");
+  };
+  const addedToCart = () => {
+    toast.success("Item Added To Cart")
+  }
   return (
     <>
       <div className="w-[100%] relative group cursor-pointer">
-        <div className="bg-[#f5f5f5] w-full p-8 overflow-hidden relative">
+        <div className="bg-[#f5f5f5] w-full py-8 overflow-hidden relative">
           <img
             src={prod_img}
-            alt="Laptop"
-            className="h-[200px] w-full rounded-t-md object-contain group-hover:scale-110 transition-all ease-in-out duration-100"
+            alt="Product"
+            className="h-[200px] w-[70%] mx-auto rounded-t-md object-contain group-hover:scale-110 transition-all ease-in-out duration-100"
           />
+          <div className="absolute w-full bottom-0 invisible group-hover:visible ">
+            <button className="w-full bg-black flex justify-center items-center gap-4 py-3 px-4 text-white text-sm"
+            onClick={addedToCart}>
+              <ShoppingCart className="w-5" />
+              Add to Cart
+            </button>
+          </div>
         </div>
         {showDiscountTag && (
           <div className="absolute top-3 left-2">
@@ -45,27 +62,32 @@ const Card = ({
           </div>
         )}
         <div className="absolute top-2 right-2 flex flex-col gap-3">
-          <button
-            variant="outline"
-            className="h-[35px] w-[35px] flex justify-center items-center rounded-full bg-white"
-            onClick={handleClick}
-          >
-            <Heart ref={heartRef} className="rounded-full w-5 " />
-          </button>
-          <button
-            className="h-[35px] w-[35px] flex justify-center items-center rounded-full bg-white"
-            onClick={() => setIsPopUpOpen(true)}
-          >
-            <Eye className="w-5 " />
-          </button>
+          {showHeart && (
+            <button
+              variant="outline"
+              className="h-[35px] w-[35px] flex justify-center items-center rounded-full bg-white"
+              onClick={handleClick}
+            >
+              <Heart ref={heartRef} className="rounded-full w-5 " />
+            </button>
+          )}
+          {showEye && (
+            <button
+              className="h-[35px] w-[35px] flex justify-center items-center rounded-full bg-white"
+              onClick={() => setIsPopUpOpen(true)}
+            >
+              <Eye className="w-5 " />
+            </button>
+          )}
+          {showDelete && (
+            <button
+              className="h-[35px] w-[35px] flex justify-center items-center rounded-full bg-white"
+              onClick={handleDelete}
+            >
+              <Trash2 className="w-5" />
+            </button>
+          )}
         </div>
-        <div className="absolute w-full bottom-[27%] invisible group-hover:visible ">
-          <button className="w-full bg-black flex justify-center items-center gap-4 py-3 px-4 text-white text-sm">
-            <ShoppingCart className="w-5" />
-            Add to Cart
-          </button>
-        </div>
-
         <div className="flex flex-col gap-3 my-3">
           <h2 className="text-sm font-semibold">{prod_name}</h2>
           <div className="flex items-center gap-4">
