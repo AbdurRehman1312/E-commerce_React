@@ -28,7 +28,7 @@ const Home = () => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const difference = new Date("2024-03-25") - new Date();
+      const difference = new Date("2024-06-25") - new Date();
       const oneDay = 1000 * 60 * 60 * 24;
       const oneHour = 1000 * 60 * 60;
       const oneMinute = 1000 * 60;
