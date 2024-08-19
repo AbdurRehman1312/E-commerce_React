@@ -8,12 +8,22 @@ import {
 } from "@/components/ui/carousel";
 import Card from "../../components/ProductCard/Card";
 import cardProp from './data';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/config/firebase";
+import { Link } from "react-router-dom";
 const FlashSales = () => {
     const [days, setDays] = useState(0);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
 
+        return () => unsubscribe();
+    }, []);
     useEffect(() => {
         const calculateTimeLeft = () => {
             const difference = new Date("2024-09-30") - new Date();
@@ -84,9 +94,11 @@ const FlashSales = () => {
                 <CarouselPrevious className="absolute lg:top-[-12%] lg:left-[94%] md:left-[90%] md:top-[-7%] lg:visible md:visible invisible" />
                 <CarouselNext className="absolute lg:top-[-12%] lg:left-[97.5%] md:left-[96%] md:top-[-7%] lg:visible md:visible invisible" />
             </Carousel>
-            <div className="flex justify-center my-10">
+            {!user ? <div className="flex justify-center my-10">
+                <Link to={"/signup"} className="btn_red text-sm px-14">Sign Up for More</Link>
+            </div> : <div className="flex justify-center my-10">
                 <button className="btn_red text-sm px-14">View All Products</button>
-            </div>
+            </div>}
         </div>
     )
 }

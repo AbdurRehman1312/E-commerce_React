@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Toaster } from "react-hot-toast";
-import Card from "../ProductCard/Card";
-import BreadCrumb from "../BreadCrumb/BreadCrumb";
+import Card from "../../components/ProductCard/Card";
+import BreadCrumb from "../../components/BreadCrumb/BreadCrumb";
 const WishList = () => {
   const [cards, setCards] = useState([
     {
