@@ -21,6 +21,7 @@ import Error from './pages/Error/Error';
 import { auth } from './config/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import { UserProvider } from './context/UserProvider';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,7 +41,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="forgot" element={<ForgotPassword />} />
         <Route path="wishlist" element={<ProtectedRoute user={user}><WishList /></ProtectedRoute>} />
-        <Route path="cart" element={<ProtectedRoute user={user}><Cart /></ProtectedRoute>}  />
+        <Route path="cart" element={<ProtectedRoute user={user}><Cart /></ProtectedRoute>} />
         <Route path="*" element={<Error />} />
       </Route>
     )
@@ -48,7 +49,9 @@ function App() {
 
   return (
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
     </React.StrictMode>
   );
 }

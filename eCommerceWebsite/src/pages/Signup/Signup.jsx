@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "@/config/firebase";
+import { createUserWithEmailAndPassword, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider, facebookProvider } from "@/config/firebase";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "@/context/UserProvider";
 const Signup = () => {
 
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loggingIn, setLoggingIn] = useState(false)
-
+  const { setProfilePic } = useUser();
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -35,9 +36,28 @@ const Signup = () => {
 
   const handleSingUpWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      setProfilePic(result.user.photoURL);
       navigate("/");
       toast.success("Signup Successful");
+    } catch (error) {
+      console.log(error);
+      toast.error("Signup Failed" + error.message);
+    }
+  }
+  const handleSingUpWithFacebook = async () => {
+    try {
+      const result = await signInWithPopup(auth, facebookProvider);
+      navigate("/");
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
+      fetch(`https://graph.facebook.com/v9.0/me?fields=picture.type(large)&access_token=${accessToken}`)
+        .then(response => response.json())
+        .then(data => {
+          setProfilePic(data.picture.data.url);
+          navigate("/");
+          toast.success("Signup Successful");
+        });
     } catch (error) {
       console.log(error);
       toast.error("Signup Failed" + error.message);
@@ -81,8 +101,12 @@ const Signup = () => {
             </div>
             <button className={`btn_red shrink-0 ${loggingIn ? "opacity-70" : ""}`} onClick={handleSignup}>{loggingIn ? "Loading" : "Create an Account"}</button>
             <button type="button" className="btn_white flex gap-4 items-center justify-center" onClick={handleSingUpWithGoogle}>
-              <img src="icons/googleicon.png" alt="" className="w-5" />
+              <img src="icons/googleicon.png" alt="" className="w-7" />
               Signup with Google
+            </button>
+            <button type="button" className="btn_white flex gap-4 items-center justify-center" onClick={handleSingUpWithFacebook}>
+              <img src="icons/fbicon.png" alt="" className="w-7" />
+              Signup with Facebook
             </button>
             <div className="text-center text-gray-700 flex items-center justify-center gap-3">
               <h2 className=" text-sm">Already have an account ?</h2>

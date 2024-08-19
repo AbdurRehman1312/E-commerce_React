@@ -1,6 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+} from "firebase/auth";
+import {} from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyB0qHLyX8R_xiQ9Y8z11L7W9RMJQwTfT9c",
   authDomain: "ecommerce-react-d8e2a.firebaseapp.com",
@@ -14,4 +18,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
-
+export const facebookProvider = new FacebookAuthProvider();

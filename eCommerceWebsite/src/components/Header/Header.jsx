@@ -22,17 +22,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import toast from "react-hot-toast";
+import { useUser } from "@/context/UserProvider";
 
 const Header = () => {
   const [open, setOpen] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [user, setUser] = useState(null);
+  const { user, profilePic } = useUser(); 
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log(currentUser);
-      
+
     });
 
     return () => unsubscribe();
@@ -152,8 +153,8 @@ const Header = () => {
             </Link>
             <DropdownMenu>
               <DropdownMenuTrigger>
-                {user && user.photoURL ? (
-                  <img src={user.photoURL} alt="User" className="w-10 h-10 rounded-full" />
+                {user && profilePic ? (
+                  <img src={profilePic} alt="User" className="w-10 h-10 rounded-full" />
                 ) : (
                   <CircleUserRound className="w-5" />
                 )}
