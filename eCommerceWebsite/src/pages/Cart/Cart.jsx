@@ -1,5 +1,5 @@
 import React from 'react'
-import BreadCrumb from '../BreadCrumb/BreadCrumb'
+import BreadCrumb from '../../components/BreadCrumb/BreadCrumb'
 
 const Cart = () => {
   return (

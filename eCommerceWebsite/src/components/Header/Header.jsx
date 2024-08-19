@@ -77,6 +77,7 @@ const Header = () => {
               <li key={link.name} className="md:ml-8 md:my-0 my-7">
                 <NavLink
                   to={link.link}
+                  onClick={() => setOpen(true)}
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3 duration-200 text-sm ${
                       isActive

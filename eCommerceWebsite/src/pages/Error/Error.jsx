@@ -1,7 +1,4 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import BreadCrumb from "../BreadCrumb/BreadCrumb";
-
 const Error = () => {
   return (
     <>

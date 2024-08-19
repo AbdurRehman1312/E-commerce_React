@@ -1,5 +1,4 @@
-import React from "react";
-import BreadCrumb from "../BreadCrumb/BreadCrumb";
+import BreadCrumb from "../../components/BreadCrumb/BreadCrumb";
 
 const Contact = () => {
   return (
@@ -8,7 +7,6 @@ const Contact = () => {
       <section>
         <div className="container my-14">
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
-            {/* First Column (4 columns wide on small and medium screens) */}
             <div className="col-span-1 sm:col-span-4 bg-white shadow-xl px-2 py-3 rounded-lg">
               <div className="flex flex-col gap-5 p-5">
                 <div className="flex items-center gap-3">
@@ -32,7 +30,6 @@ const Contact = () => {
                 <h2 className="text-sm">Emails: support@exclusive.com</h2>
               </div>
             </div>
-            {/* Second Column (8 columns wide on small and medium screens) */}
             <form className="col-span-1 sm:col-span-8 bg-white shadow-xl px-7 py-10 rounded-lg">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <input

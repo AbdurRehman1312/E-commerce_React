@@ -1,6 +1,6 @@
 import React from "react";
-import BreadCrumb from "../BreadCrumb/BreadCrumb";
-import CategoryCard from "../CategoryCard/CategoryCard";
+import BreadCrumb from "../../components/BreadCrumb/BreadCrumb";
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,8 +11,8 @@ import {
   ShieldCheck,
   BadgeDollarSign,
 } from "lucide-react";
-import TeamCard from "../TeamCard/TeamCard";
-import Services from "../Services/Services";
+import TeamCard from "../../components/TeamCard/TeamCard";
+import Services from "../../components/Services/Services";
 
 const About = () => {
   return (

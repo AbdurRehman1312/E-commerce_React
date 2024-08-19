@@ -53,7 +53,7 @@ const WishList = () => {
     <>
       <BreadCrumb />
       <section>
-        <Toaster position="top-right" reverseOrder={false} />
+        <Toaster position="top-center" reverseOrder={false} />
         <div className="container my-6">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <h2 className="text-black text-lg font-semibold mb-2 sm:mb-0">
