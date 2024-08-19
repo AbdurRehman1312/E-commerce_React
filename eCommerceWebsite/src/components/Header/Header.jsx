@@ -27,7 +27,7 @@ import { useUser } from "@/context/UserProvider";
 const Header = () => {
   const [open, setOpen] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { user, profilePic } = useUser(); 
+  const { user, profilePic } = useUser();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -141,15 +141,19 @@ const Header = () => {
           <div className="hidden lg:flex lg:space-x-8 items-center sm:space-x-5">
             <Link to="/wishlist" className="relative">
               <Heart className="w-5" />
-              <div className="absolute top-[-30%] right-[-50%] w-full">
-                <span className="px-[7px] py-[3px] rounded-full bg-red-500 text-white text-xs">4</span>
-              </div>
+              {user && (
+                <div className="absolute top-[-30%] right-[-50%] w-full">
+                  <span className="px-[7px] py-[3px] rounded-full bg-red-500 text-white text-xs">4</span>
+                </div>
+              )}
             </Link>
             <Link to="/cart" className="relative">
               <ShoppingCart className="w-5" />
-              <div className="absolute top-[-30%] right-[-50%] w-full">
-                <span className="px-[7px] py-[3px] rounded-full bg-red-500 text-white text-xs">2</span>
-              </div>
+              {user && (
+                <div className="absolute top-[-30%] right-[-50%] w-full">
+                  <span className="px-[7px] py-[3px] rounded-full bg-red-500 text-white text-xs">2</span>
+                </div>
+              )}
             </Link>
             <DropdownMenu>
               <DropdownMenuTrigger>
